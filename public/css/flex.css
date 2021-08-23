@@ -1,0 +1,86 @@
+.ub {
+  display: flex;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.shrink0 {
+  flex-shrink: 0;
+}
+
+/* 行内元素使用 Flex */
+.ub-in { 
+  display: inline-flex;
+}
+
+/* 主轴方向 默认水平*/
+.ub-h {
+  flex-direction: row;
+}
+
+/* 主轴方向 垂直*/
+.ub-ver {
+  flex-direction: column;
+}
+
+/* 换行 */
+.ub-next {
+  flex-wrap: wrap;
+}
+
+/* 主轴上的对齐方式 */
+/* 主轴左排列*/
+.ub-ps {
+  justify-content: flex-start;
+}
+
+/* 主轴右排列*/
+.ub-pe {
+  justify-content: flex-end;
+}
+
+/* 主轴居中排列*/
+.ub-pc {
+  justify-content: center;
+}
+
+/* 主轴靠两边均匀扩散排列*/
+.ub-pb {
+  justify-content: space-between;
+}
+
+/* 主轴不靠两边均匀扩散排列*/
+.ub-pa {
+  justify-content: space-around;
+}
+
+/* 主轴垂直居中 */
+.ub-ac {
+  align-items: center;
+}
+
+/* 主轴垂直吸底 */
+.ub-ae {
+  align-items: flex-end;
+}
+
+.ub-f1 {
+  flex: 1;
+}
+
+.fw {
+  width: 100%;
+}
+
+.hw {
+  width: 50%;
+}
+
+.fh {
+  height: 100%;
+}
+
+.main{
+  margin: 0;
+  padding: 0;
+}
