@@ -11,38 +11,34 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
+<script>
+import { defineComponent, ref, getCurrentInstance } from 'vue'
+
 export default defineComponent({
   name: 'App',
+  props: {
+    btnList: {
+      type: Array,
+      default() {
+        return []
+      },
+    },
+  },
   setup() {
-    const btnList = ref([
-      {
-        name: '我的',
-      },
-      {
-        name: '发现',
-      },
-      {
-        name: '云村',
-      },
-      {
-        name: '视频',
-      },
-    ])
+    const { ctx } = getCurrentInstance()
     const btnIndex = ref('0')
     const btnClickFun = (index) => {
       btnIndex.value = index
+      ctx.$emit('btnClickFun', ctx.btnList[index])
     }
     return {
-      btnList,
       btnIndex,
       btnClickFun,
     }
   },
 })
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .nav_bar {
   width: 100%;
   height: 50px;
