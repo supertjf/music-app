@@ -1,30 +1,13 @@
 <template>
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide" v-for="(item,index) in swiperList" :key="index" @click="swiperClick(item)">
-        <img :src="item.url" alt="">
-      </div>
-    </div>
-    <!-- 如果需要分页器 -->
-    <div class="swiper-pagination"></div>
-
-    <!-- 如果需要导航按钮 -->
-    <template v-if="swiperOption.navigation">
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-    </template>
-
-    <!-- 如果需要滚动条 -->
-    <template v-if="swiperOption.scrollbar">
-      <div class="swiper-scrollbar"></div>
-    </template>
-  </div>
-  <!-- 导航等组件可以放在container之外 -->
+  <van-swipe class="my_swiper" :autoplay="swiperOption.autoplay" :loop="swiperOption.loop" :show-indicators="swiperOption.showIndicators" :indicator-color="swiperOption.indicatorColor">
+    <van-swipe-item v-for="(item, index) in swiperList" :key="index" @click="swiperClick(item)">
+      <img :src="item.imageUrl" alt="">
+    </van-swipe-item>
+  </van-swipe>
 </template>
 <script>
 import { defineComponent, getCurrentInstance } from 'vue'
-import Swiper from 'swiper'
-import 'swiper/css/swiper.css'
+
 export default defineComponent({
   name: 'SwiperContainer',
   props: {
@@ -32,16 +15,10 @@ export default defineComponent({
       type: Object,
       default() {
         return {
+          autoplay: 3000,
           loop: true,
-          effect: 'coverflow',
-          autoplay: {
-            delay: 3000,
-            stopOnLastSlide: false,
-            disableOnInteraction: false,
-          },
-          pagination: {
-            el: '.swiper-pagination',
-          },
+          showIndicators: true,
+          indicatorColor: '#ff6034',
         }
       },
     },
@@ -52,17 +29,12 @@ export default defineComponent({
       },
     },
   },
-  mounted() {
-    // https://www.swiper.com.cn/api/start/new.html
-    let mySwiper = new Swiper(
-      '.swiper-container',
-      getCurrentInstance().ctx.swiperOption
-    )
-  },
+  components: {},
+  mounted() {},
   setup() {
     const { ctx } = getCurrentInstance()
-    const swiperClick = (item) => {
-      ctx.$emit('swiperClick', item)
+    const swiperClick = (data) => {
+      ctx.$emit('swiperClick', data)
     }
     return {
       swiperClick,
@@ -71,25 +43,15 @@ export default defineComponent({
 })
 </script>
 <style lang="less">
-.swiper-container {
+.my_swiper {
   width: 100%;
   height: 100%;
-  .swiper-wrapper {
-    .swiper-slide {
-      img {
-        width: 100%;
-        object-fit: scale-down;
-      }
-    }
-  }
-  .swiper-pagination {
-    .swiper-pagination-bullet {
-      background: #ffffff;
-      opacity: 0.4;
-    }
-    .swiper-pagination-bullet-active {
-      background-color: palevioletred;
-      opacity: 1;
+  .van-swipe-item {
+    width: 100%;
+    height: 100%;
+    img {
+      width: 100%;
+      object-fit: cover;
     }
   }
 }

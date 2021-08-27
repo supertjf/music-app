@@ -9,7 +9,7 @@
 }
 
 /* 行内元素使用 Flex */
-.ub-in { 
+.ub-in {
   display: inline-flex;
 }
 
@@ -80,7 +80,7 @@
   height: 100%;
 }
 
-.main{
+.main {
   margin: 0;
   padding: 0;
 }
