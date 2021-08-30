@@ -4,6 +4,6 @@
 
 <style lang="less">
 * {
-  font-family: '微软雅黑';
+  font-family: '微软雅黑' !important;
 }
 </style>

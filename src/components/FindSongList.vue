@@ -17,12 +17,11 @@ export default defineComponent({
 <style lang="less" scoped>
 .find_song_list {
   width: 7.2rem;
-  // height: 4rem;
   background-color: rgba(0, 0, 0, 0.1);
   margin: 0.2rem auto;
   .find_song_list_title {
     width: 100%;
-    padding: 10px;
+    padding: 10px 0;
     box-sizing: border-box;
     position: relative;
   }

@@ -30,7 +30,6 @@ export default defineComponent({
     },
   },
   components: {},
-  mounted() {},
   setup() {
     const { ctx } = getCurrentInstance()
     const swiperClick = (data) => {
