@@ -30,10 +30,9 @@ export default defineComponent({
     },
   },
   components: {},
-  setup() {
-    const { ctx } = getCurrentInstance()
+  setup(props, { emit }) {
     const swiperClick = (data) => {
-      ctx.$emit('swiperClick', data)
+      emit('swiperClick', data)
     }
     return {
       swiperClick,

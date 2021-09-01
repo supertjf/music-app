@@ -20,10 +20,9 @@ export default defineComponent({
       },
     },
   },
-  setup() {
-    const { ctx } = getCurrentInstance()
+  setup(props, { emit }) {
     const iconClick = (data) => {
-      ctx.$emit('iconClick', data)
+      emit('iconClick', data)
     }
     return {
       iconClick,

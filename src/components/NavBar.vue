@@ -24,12 +24,11 @@ export default defineComponent({
       },
     },
   },
-  setup() {
-    const { ctx } = getCurrentInstance()
+  setup(props, { emit }) {
     const btnIndex = ref('0')
     const btnClickFun = (index) => {
       btnIndex.value = index
-      ctx.$emit('btnClickFun', ctx.btnList[index])
+      emit('btnClickFun', ctx.btnList[index])
     }
     return {
       btnIndex,

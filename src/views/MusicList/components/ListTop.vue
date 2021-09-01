@@ -17,12 +17,39 @@
       </div>
       <img :src="playlist.coverImgUrl" alt="">
     </div>
-    <div class="container_right">
+    <div class="container_right ub ub-ver ub-pa">
       <div class="right_title">
         {{ playlist.name }}
       </div>
-      <div class="right_head"></div>
-      <div class="right_detail"></div>
+      <div class="right_head ub ub-ac" v-if="playlist.creator">
+        <img class="right_head_img" :src="playlist.creator.avatarUrl" alt="">
+        {{ playlist.creator.nickname }}
+        <img class="right_icon" src="../../../assets/img/pages/icon_right.png" alt="">
+      </div>
+      <div class="right_detail ub ub-ac">
+        <div class="right_detail_t">
+          {{ playlist.description }}
+        </div>
+        <img class="right_icon" src="../../../assets/img/pages/icon_right.png" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="list_top_tool ub ub-pa">
+    <div class="list_top_tool_div">
+      <img src="../../../assets/img/pages/icon-b-comment.png" alt="">
+      <p>{{ playCountFun(playlist.commentCount) }}</p>
+    </div>
+    <div class="list_top_tool_div">
+      <img src="../../../assets/img/pages/icon-b-share.png" alt="">
+      <p>{{ playCountFun(playlist.shareCount) }}</p>
+    </div>
+    <div class="list_top_tool_div">
+      <img src="../../../assets/img/pages/icon-b-down.png" alt="">
+      <p>下载</p>
+    </div>
+    <div class="list_top_tool_div">
+      <img src="../../../assets/img/pages/icon-b-select.png" alt="">
+      <p>多选</p>
     </div>
   </div>
 
@@ -69,6 +96,9 @@ export default defineComponent({
   padding: 0.1rem 0.2rem;
   box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0px;
+  z-index: 100;
   .icon_go_back {
     height: 100%;
   }
@@ -114,14 +144,15 @@ export default defineComponent({
 }
 .list_top_container {
   width: 100%;
-  padding: 0.5rem 0.3rem;
+  padding: 0.25rem 0.25rem;
   box-sizing: border-box;
-  background-color: red;
   .container_left {
     width: 3rem;
     height: 3rem;
     position: relative;
     .right_title_count {
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 0.2rem;
       font-size: 0.24rem;
       font-weight: 1;
       color: #ffffff;
@@ -145,14 +176,80 @@ export default defineComponent({
   }
   .container_right {
     width: 3.5rem;
-    height: 100%;
+    height: 3rem;
     text-align: justify;
     word-wrap: break-word;
     .right_title {
+      max-height: 54px;
       font-size: 0.36rem;
       font-weight: bold;
       color: #ffffff;
       position: relative;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+    }
+    .right_head {
+      width: 100%;
+      height: 0.6rem;
+      font-size: 0.2rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+      position: relative;
+      .right_head_img {
+        width: 0.6rem;
+        height: 0.6rem;
+        border-radius: 50%;
+        margin-right: 0.1rem;
+      }
+      .right_icon {
+        width: 0.25rem;
+        height: 0.25rem;
+      }
+    }
+    .right_detail {
+      width: 94%;
+      height: 0.8rem;
+      font-size: 0.2rem;
+      line-height: 0.4rem;
+      color: rgba(255, 255, 255, 0.7);
+      position: relative;
+      .right_detail_t {
+        text-overflow: -o-ellipsis-lastline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      .right_icon {
+        width: 0.3rem;
+        height: 0.3rem;
+        position: absolute;
+        right: -0.35rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+.list_top_tool {
+  width: 100%;
+  padding: 0.25rem;
+  box-sizing: border-box;
+  .list_top_tool_div {
+    width: 1.5rem;
+    text-align: center;
+    img {
+      width: 0.6rem;
+      height: 0.6rem;
+      margin: 0 auto;
+    }
+    p {
+      font-size: 0.3rem;
+      color: #ffffff;
     }
   }
 }
