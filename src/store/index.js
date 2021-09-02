@@ -4,8 +4,7 @@ export default createStore({
   namespaced: true,
   state: {
     musicPlayList: [],
-    musicPlayCurrentIndex: 0,
-    showMusicConsole: true
+    musicPlayCurrentIndex: 0
   },
   mutations: {
     setMusicPlayList(state, value) {

@@ -10,11 +10,6 @@ const routes = [
     path: '/musiclist',
     name: 'MusicList',
     component: () => import('../views/MusicList/MusicList.vue')
-  },
-  {
-    path: '/musicdetail',
-    name: 'MusicDetail',
-    component: () => import('../views/MusicDetail/MusicDetail.vue')
   }
 ]
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="music_console ub ub-pb" @click="goMusicDetailPage" v-if="showMusicConsole">
+  <div class="music_console ub ub-pb" @click="goMusicDetailPage">
     <img class="music_img" :src="musicPlayList[musicPlayCurrentIndex]?.al?.picUrl || musicImg" alt="">
     <div class="content ub ub-ver ub-pa">
       <div class="title">{{ musicPlayList[musicPlayCurrentIndex]?.name || '歌曲名字' }}</div>
@@ -11,20 +11,18 @@
     <img class="music_list" src="../assets/img/pages/icon-list.png" alt="">
   </div>
   <audio ref="audio" :src="`https://music.163.com/song/media/outer/url?id=${musicPlayList[musicPlayCurrentIndex]?.id}.mp3`"></audio>
+  <MusicDetail :musicDetail="musicPlayList[musicPlayCurrentIndex]" />
 </template>
 <script>
-import {
-  computed,
-  defineComponent,
-  getCurrentInstance,
-  onMounted,
-  ref,
-  watch,
-} from 'vue'
+import { computed, defineComponent, getCurrentInstance, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
+import MusicDetail from '@/components/MusicDetail'
 export default defineComponent({
   name: 'App',
+  components: {
+    MusicDetail,
+  },
   setup() {
     const router = useRouter()
     const { ctx } = getCurrentInstance()

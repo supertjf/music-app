@@ -13,23 +13,6 @@ export default defineComponent({
   components: {
     MusicConsole,
   },
-  setup() {
-    const route = useRoute()
-    const store = useStore()
-    const path = computed(() => route.path)
-    watch(
-      path,
-      (newV, oldV) => {
-        if (newV === '/musicdetail') {
-          store.state.showMusicConsole = false
-        } else {
-          store.state.showMusicConsole = true
-        }
-      },
-      { immediate: true, deep: true }
-    )
-    return {}
-  },
 })
 </script>
 <style lang="less">
